@@ -78,10 +78,10 @@ const NotificationForm: React.FC = () => {
     };
 
     return (
-        <div className="max-w-[1000px] h-[600px] mx-auto bg-gray-200 rounded-t-md mt-10 flex flex-col gap-y-8">
+        <div className="max-w-[1000px] h-[700px] md:h-[600px] mx-auto bg-gray-200 rounded-t-md mt-10 flex flex-col gap-y-8">
             <h2 className="text-2xl font-bold text-center bg-gray-500 text-white rounded-t-md py-2 mb-6">Notification Form</h2>
             <form onSubmit={handleSubmit} className="space-y-4 w-[90%] mx-auto mt-10">
-                <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1">
                         <label className="block text-sm font-medium mb-1">First Name</label>
                         <input type="text" name="firstName" value={formData.firstName} onChange={handleChange}
@@ -95,8 +95,8 @@ const NotificationForm: React.FC = () => {
                 </div>
 
                 <p className="text-gray-600 font-medium">How would you prefer to be notified?</p>
-                <div className="flex items-center gap-4">
-                    <div className="flex-1 flex flex-col">
+                <div className="flex flex-col md:flex-row items-center gap-4">
+                    <div className="w-full md:flex-1 flex flex-col">
                         <div className="flex items-center gap-2">
                             <input type="checkbox" name="notifyByEmail" checked={formData.notifyByEmail}
                                    onChange={handleChange}/>
@@ -105,7 +105,7 @@ const NotificationForm: React.FC = () => {
                         <input type="text" name="lastName" value={formData.lastName} onChange={handleChange}
                                className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0" required/>
                     </div>
-                    <div className="flex-1 flex flex-col">
+                    <div className="w-full md:flex-1 flex flex-col">
                         <div className="flex items-center gap-2">
                             <input type="checkbox" name="notifyByPhone" checked={formData.notifyByPhone}
                                    onChange={handleChange}/>
@@ -139,7 +139,7 @@ const NotificationForm: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="mx-auto w-[50%] flex flex-col justify-center gap-y-3">
+                <div className="mx-auto w-full md:w-[50%] flex flex-col justify-center gap-y-3">
                     <label className="block text-sm font-medium mb-1">Supervisor</label>
                     <select name="supervisor" value={formData.supervisor} onChange={handleChange}
                             className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0 mx-auto" required>
@@ -150,7 +150,7 @@ const NotificationForm: React.FC = () => {
                     </select>
                 </div>
 
-                <button type="submit" className="block mx-auto w-[30%] bg-gray-600 text-white py-2 rounded hover:bg-gray-700">SUBMIT
+                <button type="submit" className="block mx-auto w-[70%] md:w-[30%] bg-gray-600 text-white py-2 rounded hover:bg-gray-700">SUBMIT
                 </button>
 
                 {message && <p className="text-center mt-4 text-sm text-green-700">{message}</p>}
