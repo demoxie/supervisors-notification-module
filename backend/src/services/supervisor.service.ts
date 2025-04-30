@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {SuperVisor, SupervisorDetails} from '../types';
 import * as dotenv from 'dotenv';
-import {validationResult} from "express-validator";
 
 dotenv.config();
 
