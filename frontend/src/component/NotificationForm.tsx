@@ -102,7 +102,7 @@ const NotificationForm: React.FC = () => {
                                    onChange={handleChange}/>
                             <label>Email</label>
                         </div>
-                        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange}
+                        <input type="text" name="email" value={formData.email} onChange={handleChange}
                                className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0" required/>
                     </div>
                     <div className="w-full md:flex-1 flex flex-col">
@@ -111,7 +111,7 @@ const NotificationForm: React.FC = () => {
                                    onChange={handleChange}/>
                             <label>Phone Number</label>
                         </div>
-                        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange}
+                        <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}
                                className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0" required/>
                     </div>
 
@@ -142,7 +142,7 @@ const NotificationForm: React.FC = () => {
                 <div className="mx-auto w-full md:w-[50%] flex flex-col justify-center gap-y-3">
                     <label className="block text-sm font-medium mb-1">Supervisor</label>
                     <select name="supervisor" value={formData.supervisor} onChange={handleChange}
-                            className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0 mx-auto" required>
+                            className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0 mx-auto">
                         <option value="">Select...</option>
                         {supervisors?.map((s, index) => (
                             <option key={index} value={s}>{s}</option>
