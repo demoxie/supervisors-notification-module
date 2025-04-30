@@ -16,7 +16,7 @@ const NotificationForm: React.FC = () => {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/supervisors')
+        axios.get('http://localhost:5500/api/supervisors')
             .then(res => {
                 if (Array.isArray(res.data)) {
                     setSupervisors(res.data);
@@ -54,7 +54,7 @@ const NotificationForm: React.FC = () => {
         e.preventDefault();
 
         try {
-            await axios.post('/api/submit', {
+            await axios.post('http://localhost:5500/api/submit', {
                 firstName: formData.firstName,
                 lastName: formData.lastName,
                 email: formData.notifyByEmail ? formData.email : '',
@@ -102,8 +102,13 @@ const NotificationForm: React.FC = () => {
                                    onChange={handleChange}/>
                             <label>Email</label>
                         </div>
-                        <input type="text" name="email" value={formData.email} onChange={handleChange}
-                               className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0" required/>
+                        {formData.notifyByEmail && (
+                            <>
+                                <input type="text" name="email" value={formData.email} onChange={handleChange}
+                                       className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0" required/>
+                            </>
+                        )}
+
                     </div>
                     <div className="w-full md:flex-1 flex flex-col">
                         <div className="flex items-center gap-2">
@@ -111,38 +116,22 @@ const NotificationForm: React.FC = () => {
                                    onChange={handleChange}/>
                             <label>Phone Number</label>
                         </div>
-                        <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}
-                               className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0" required/>
-                    </div>
-
-                </div>
-
-                <div className="flex gap-4">
-                    <div className="flex-1">
-                        {formData.notifyByEmail && (
-                            <>
-                                <label className="block text-sm font-medium mb-1">Email</label>
-                                <input type="email" name="email" value={formData.email} onChange={handleChange}
-                                       className="w-full border px-3 py-2 rounded"/>
-                            </>
-                        )}
-                    </div>
-                    <div className="flex-1">
                         {formData.notifyByPhone && (
                             <>
-                                <label className="block text-sm font-medium mb-1">Phone Number</label>
-                                <input type="tel" name="phoneNumber" value={formData.phoneNumber}
+                                <input type="text" name="phoneNumber" value={formData.phoneNumber}
                                        onChange={handleChange}
-                                       className="w-full border px-3 py-2 rounded"/>
+                                       className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0" required/>
                             </>
                         )}
+
                     </div>
+
                 </div>
 
                 <div className="mx-auto w-full md:w-[50%] flex flex-col justify-center gap-y-3">
                     <label className="block text-sm font-medium mb-1">Supervisor</label>
                     <select name="supervisor" value={formData.supervisor} onChange={handleChange}
-                            className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0 mx-auto">
+                            className="w-full bg-white px-3 py-2 focus:outline-none focus:ring-0 mx-auto" required>
                         <option value="">Select...</option>
                         {supervisors?.map((s, index) => (
                             <option key={index} value={s}>{s}</option>

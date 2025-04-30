@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 // ✅ Use routes (they contain route paths like /supervisors)
 app.use('/api', supervisorRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
